@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "@mui/material";
+import Profile from "./components/Profile";
+import React from "react";
+import Weather from "./components/Weather";
+
+const Section: React.FC<{children: React.ReactNode, title: string}> = ({ children, title }) => {
+  return <>
+    <div style={{marginBottom: 32}}>
+      <h2>{title}</h2>
+      {children}
+    </div>
+  </>
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container maxWidth="sm">
+        <Section title="天気" children={<Weather />} />
+        <Section title="プロフィール" children={<Profile />} />
+      </Container>
     </div>
   );
 }
